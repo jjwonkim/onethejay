@@ -20,14 +20,12 @@ import java.util.List;
 public class BoardController {
     private final BoardService boardService;
 
-
     @GetMapping("/board/list")
     public Header<List<BoardDto>> boardList(
-            @PageableDefault(sort = {"idx"}) Pageable pageable
-//            ,            SearchCondition searchCondition
+            @PageableDefault(sort = {"idx"}) Pageable pageable,
+            SearchCondition searchCondition
     ) {
-        return boardService.getBoardList(pageable);
-//        return boardService.getBoardList(pageable, searchCondition);
+        return boardService.getBoardList(pageable, searchCondition);
     }
 
     @GetMapping("/board/{id}")
